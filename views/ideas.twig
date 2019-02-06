@@ -1,0 +1,55 @@
+{% extends "base/base.twig" %}
+{% block error %}{{ error }}{% endblock %}
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <a href="/ideas/add" class="add-button btn btn-primary">
+                                Add
+                            </a>
+                            <h4 class="title">Opkomst ideeën lijsten</h4>
+                            <p class="category">Deze zijn gemaakt door gebruikers</p>
+
+                        </div>
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                <th>ID</th>
+                                <th>Naam</th>
+                                <th>Hoeveelheid opkomsten</th>
+                                <th>bekijken</th>
+                                <th>gemaakt op:</th>
+                                <th>laatste update:</th>
+                                </thead>
+                                <tbody>
+                                {% if lists is defined %}
+                                    {% for list in lists %}
+                                        <tr>
+                                            <td>{{ list.id }}</td>
+                                            <td>{{ list.name|e }}</td>
+                                            <td>{{ list.amount_of_resources|e }}</td>
+                                            <td><a href="/ideas/{{ list.id }}/edit">bekijken</a></td>
+                                            <td>{{ list.created_at}}</td>
+                                            <td>{{ list.updated_at}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    {% else %}
+                                    <tr>
+                                        <td colspan="6">
+                                            Zie error hier boven want er is iets mis gegaan.
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

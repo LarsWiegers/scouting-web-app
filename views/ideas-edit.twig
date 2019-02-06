@@ -1,0 +1,70 @@
+{% extends "base/base.twig" %}
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <form action="/ideas" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="id" value="{{ list.id }}">
+                                <input type="hidden" name="name" value="{{ list.name }}">
+                                <div class="form-group" style="float: right;">
+                                    <label>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </label>
+                                </div>
+                            </form>
+                            <h4 class="title">Lijst: {{ list.name }}</h4>
+                        </div>
+                        <div class="content">
+                            <form action="/ideas" method="POST">
+                                <input type="hidden" name="_method" value="PUT">
+                                <input type="hidden" name="id" value="{{ list.id }}">
+                                <label for="name">
+                                    Naam: <input type="text" id="name" name="name" value="{{ list.name }}" class="form-control">
+                                </label>
+                                <div class="form-group">
+                                    <label>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    </label>
+                                </div>
+                            </form>
+                            <a href="/ideas/{{ list.id }}/add" class="btn btn-block btn-primary">
+                                Opkomst toevoegen
+                            </a>
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                <th>ID</th>
+                                <th>Naam</th>
+                                </thead>
+                                <tbody>
+                                {% if list is defined %}
+                                    {% for resource in list.resources %}
+                                        <tr>
+                                            <td>{{ resource.id }}</td>
+                                            <td>{{ resource.name|e }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    {% if not list.resources.length %}
+                                        <td colspan="2">
+                                            Er zijn nog geen opkomsten toegevoegd
+                                        </td>
+                                    {% endif %}
+                                {% else %}
+                                    <tr>
+                                        <td colspan="2">
+                                            Zie error hier boven want er is iets mis gegaan.
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

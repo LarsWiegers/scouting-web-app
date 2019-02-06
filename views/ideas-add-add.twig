@@ -1,0 +1,23 @@
+{% extends "base/base.twig" %}
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Toevoegen aan lijst: {{ list.name }}</h4>
+                        </div>
+                        <div class="content" id="app">
+                                <div is="rowContainer" list-id="{{ list.id }}"></div>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+<script src="/javascripts/ideas-add.js" type="text/javascript" defer></script>
+{% endblock %}

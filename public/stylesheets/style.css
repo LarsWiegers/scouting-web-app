@@ -1,0 +1,16 @@
+a {
+  color: #00B7FF; }
+
+.header .btn {
+  float: right; }
+
+.error-bar {
+  background-color: #eb4924;
+  color: white;
+  font-weight: 400;
+  width: 100%;
+  font-size: 20px; }
+  .error-bar p {
+    padding: 15px 15px; }
+
+/*# sourceMappingURL=style.css.map */
